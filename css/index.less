@@ -183,3 +183,70 @@ header{
         }
     }
 }
+.map{
+    height: 10.125rem;
+    position: relative;
+    // background-color: pink;
+    .map1{
+        width: 6.475rem;
+        height: 6.475rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: url(../img/map.png) ;
+        background-size: 100% 100%;
+        opacity: 0.3;
+    }
+    .map2{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 8.0375rem;
+        height: 8.0375rem;
+        
+        background: url(../img/lbx.png);
+        background-size: 100% 100%;
+        animation: rotate1 15s linear infinite;
+        opacity: 0.6;
+    }
+    // 360度旋转
+    @keyframes rotate1 {
+        from{
+            transform:translate(-50%,-50%) rotate(0deg);
+        }
+        to{
+            transform:translate(-50%,-50%) rotate(360deg);
+        }
+    }
+    .map3{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width:7.075rem;
+        height:7.075rem;
+     
+        background: url(../img/jt.png);
+        background-size: 100% 100%;
+        animation: rotate2 10s linear infinite;
+        opacity: .6;
+    }
+    @keyframes rotate2 {
+        from{
+            transform:translate(-50%,-50%) rotate(0deg);
+        }
+        to{
+            transform:translate(-50%,-50%) rotate(-360deg);
+        }
+    }
+    .chart{
+        position: absolute;
+        top: 0;
+        left: 0;
+        // background-color: pink;
+        width: 100%;
+        height: 10.125rem;
+    }
+}
