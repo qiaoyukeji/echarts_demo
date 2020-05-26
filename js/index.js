@@ -4,7 +4,7 @@
  * @Author: qiaoyurensheng@163.com
  * @Date: 2020-05-26 12:01:41
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-05-26 13:22:09
+ * @LastEditTime: 2020-05-26 15:33:25
  */
 // 通过立即执行函数，防止命名冲突与变量污染
 // 柱图1
@@ -86,3 +86,116 @@
     });
 
 })();
+
+// 柱状图2
+(function () {
+    // 声明颜色数组
+    var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
+    var myChart = echarts.init(document.querySelector(".bar2 .chart"));
+    var option = {
+        grid: {
+            top: "10%",
+            left: "22%",
+            bottom: "10%",
+            containLabel: false
+        },
+        xAxis: {
+            show: false
+        },
+        yAxis: [
+            {
+                type: 'category',
+                //不显示y轴线条
+                axisLine: {
+                    show: false
+                },
+                // 不显示刻度
+                axisTick: {
+                    show: false
+                },
+                // 刻度标签文字设置为白色
+                axisLabel: {
+                    color: "#fff"
+                },
+                // 是否翻转显示
+                inverse: true,
+                data: ["HTML5", "CSS3", "javascript", "VUE", "NODE"],
+            }, {
+                show: true,
+                // 是否翻转显示
+                inverse: true,
+
+                data: [702, 350, 610, 793, 664],
+                // 不显示y轴的线
+                axisLine: {
+                    show: false
+                },
+                // 不显示刻度
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 12,
+                        color: "#fff"
+                    }
+                }
+            }
+        ],
+        series: [
+            {
+                name: '条',
+                type: 'bar',
+                yAxisIndex: 0,
+                //修改柱子之间的距离
+                barCategoryGap: 50,
+                // 修改柱子的宽度
+                barWidth: 10,
+                data: [70, 34, 60, 78, 69],
+                // 修改圆角
+                itemStyle: {
+                    barBorderRadius: 20,
+                    // 设置柱子的不同颜色
+                    color: function (parmas) {
+                        // parmas 是柱子的对象
+                        // console.log(parmas);
+                        return myColor[parmas.dataIndex % 5]
+
+                    }
+                },
+                // 显示柱子内部的文字
+                label: {
+                    show: true,
+                    position: "inside",
+                    // 文字的显示格式
+                    formatter: "{c}%"
+                }
+
+            },
+            {
+                name: '框',
+                type: 'bar',
+                yAxisIndex: 1,
+                //修改柱子之间的距离
+                barCategoryGap: 50,
+                // 修改柱子的宽度
+                barWidth: 15,
+                itemStyle: {
+                    color: "none",
+                    borderWidth: 3,
+                    borderColor: "#00c1de",
+                    barBorderRadius: 15
+                },
+                data: [100, 100, 100, 100, 100],
+            }
+        ]
+    };
+
+    myChart.setOption(option)
+    // 让图表跟随屏幕自适应
+    window.addEventListener("resize", function () {
+        myChart.resize();
+    });
+
+})();
+
